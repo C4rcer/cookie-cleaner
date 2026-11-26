@@ -1,0 +1,23 @@
+{
+  "slug": "dustpan-cookie-cleaner",
+  "name": "Dustpan: Auto Cookie Cleaner",
+  "summary": "Deletes a site's cookies shortly after you close its last tab, except for the sites you keep. Off until you set it up, never touches a site that is still open, and a wrong clean can be undone. Free, no ads, no tracking.",
+  "description": "Dustpan cleans up cookies for you. When you close the last tab of a site, it waits a few seconds and then deletes that site's cookies, unless the site is on your keep list.\n\n**Be aware: this signs you out**\nA site whose cookies are deleted forgets you: you are signed out, a shopping cart may be emptied, and settings a site keeps in cookies go back to their defaults. That is what a cookie cleaner is for. Put the sites you want to stay signed in to on your keep list and Dustpan never touches them.\n\n**No surprises**\n- Off after install. Until you go through a short setup, Dustpan deletes nothing and only shows what it would clean\n- The setup says in plain words what will happen and lets you tick the sites to keep, starting with the ones you have open\n- A site that is still open in any tab, window or container is never cleaned\n- Turning it on deletes nothing. Cleaning starts with the next tab you close\n- Cleaned the wrong site? Restore puts its cookies back, for 15 minutes after a clean. After that Dustpan tells you plainly that they are gone\n\n**How it works**\n- It waits 30 seconds after a site's last tab closes (10 seconds to 5 minutes, your choice). Reopen the site in that time and nothing is deleted\n- A site is the whole domain: mail.example.com and accounts.example.com are one site. Dustpan uses the Public Suffix List, so shop.example.co.uk and news.other.co.uk stay two sites\n- Keep a site always, or only until Firefox closes (it is then cleaned the next time Firefox starts). One click in the toolbar popup keeps the site you are on\n- Clean now: the site you are on, or every site that is neither open nor kept. Both ask first and say how many sites and cookies\n- An activity list of what was cleaned: the site and the number of cookies, never a cookie's name or contents\n\n**Works with Firefox's privacy features**\n- Total Cookie Protection: cookies stored for embedded content belong to the site you visited, and are kept or cleaned together with it\n- First-party isolation\n- Container tabs: a site is cleaned in every container at once, and only when it is open in none of them\n- Private windows: Dustpan does not run there. Firefox deletes private cookies itself when you close them\n\n**Permissions, and why**\nFirefox asks you to let Dustpan \"Access your data for all websites\" and \"Access browser tabs\". Firefox only shows an add-on the cookies of sites it has access to, so a cookie cleaner needs access to all of them. The tab permission lets Dustpan see which sites are still open. Dustpan does not read or change the pages themselves, and nothing leaves your device: no server, no account, no analytics. If you switch site access off in Firefox's add-on settings, Dustpan stops cleaning and tells you why.\n\n**Free, for real**\nEvery feature is unlocked for everyone. No ads, no account, no tracking. If Dustpan keeps your browser tidy and you'd like to say thanks, there's a Ko-fi link in the popup. It's entirely optional and unlocks nothing.\n\n**Good to know**\n- Cookies only: local storage and other site data are not cleaned in this version\n- Sites that were still open when you closed Firefox are left alone by default. A setting cleans them about a minute after the next start\n- Desktop Firefox only for now: it could not be tested on Firefox for Android, so it is not offered there",
+  "categories": {
+    "firefox": [
+      "privacy-security"
+    ]
+  },
+  "compatibility": [
+    "firefox"
+  ],
+  "license": "MPL-2.0",
+  "homepage": "",
+  "support_url": "",
+  "contributions_url": "https://ko-fi.com/carcer7378",
+  "screenshot_captions": {
+    "1-popup.png": "A site is cleaned shortly after you close its last tab. See what is waiting, and undo a clean with Restore",
+    "2-setup.png": "Off until you set it up: tick the sites you want to stay signed in to, starting with the ones you have open",
+    "3-sites.png": "Every site with cookies at a glance: keep it always, keep it until Firefox closes, or clean it now"
+  }
+}

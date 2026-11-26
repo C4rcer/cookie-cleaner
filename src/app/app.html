@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dustpan</title>
+  <link rel="icon" href="../icons/icon.svg">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="../shared/support.css">
+  <link rel="stylesheet" href="../shared/more-addons.css">
+</head>
+<body>
+  <header class="top">
+    <span class="brand"><img src="../icons/icon.svg" alt="" width="22" height="22"> Dustpan</span>
+    <nav>
+      <a href="#sites">Sites</a>
+      <a href="#activity">Activity</a>
+      <a href="#settings">Settings</a>
+      <a href="#about">Good to know</a>
+    </nav>
+    <a class="support-pill" data-support title="Free forever, no ads, no tracking. Tips keep it maintained."><span class="heart">&#x2665;</span> Support</a>
+  </header>
+
+  <main>
+    <section id="status" class="status" data-state="off">
+      <div class="status-line"><span class="dot"></span><span id="statusTitle"></span></div>
+      <p id="statusText"></p>
+      <div class="row">
+        <button id="statusBtn" class="btn primary" type="button"></button>
+        <button id="rerunSetup" class="btn" type="button" hidden>Go through the setup again</button>
+      </div>
+    </section>
+
+    <section id="setup" class="card setup" hidden>
+      <div id="step1">
+        <p class="step">Step 1 of 2</p>
+        <h2>Before you turn it on</h2>
+        <ul class="points">
+          <li><strong>What it does.</strong> When you close the last tab of a site, Dustpan waits <span data-grace>30 seconds</span> and then deletes that site's cookies.</li>
+          <li><strong>You will be signed out.</strong> Every site that is not on your keep list forgets you once it has been cleaned. That is what a cookie cleaner is for. In the next step you pick the sites you want to stay signed in to.</li>
+          <li><strong>What it never touches.</strong> A site that is still open in any tab, window or container, and any site on your keep list.</li>
+          <li><strong>A mistake can be undone.</strong> For <span data-restore-min>15</span> minutes after a clean, Restore puts the cookies back. After that they are gone for good.</li>
+          <li><strong>Nothing is deleted when you turn it on.</strong> Cleaning starts with the next tab you close.</li>
+        </ul>
+        <div class="row">
+          <button id="toStep2" class="btn primary" type="button">Choose the sites to keep</button>
+          <button id="setupCancel" class="btn" type="button">Not now</button>
+        </div>
+      </div>
+      <div id="step2" hidden>
+        <p class="step">Step 2 of 2</p>
+        <h2>Which sites do you want to stay signed in to?</h2>
+        <p class="muted">Tick them. Every other site is signed out after you close it. You can change this list at any time.</p>
+        <input id="setupFilter" type="search" placeholder="Find a site" aria-label="Find a site">
+        <div id="openGroup">
+          <h3>Open in a tab right now</h3>
+          <ul id="setupOpen" class="plain picks"></ul>
+        </div>
+        <div id="otherGroup">
+          <h3>Other sites with cookies</h3>
+          <ul id="setupOther" class="plain picks"></ul>
+        </div>
+        <p id="setupNone" class="muted" hidden>No sites match.</p>
+        <p id="setupSummary" class="summary"></p>
+        <div class="row">
+          <button id="setupFinish" class="btn primary" type="button">Turn on automatic cleaning</button>
+          <button id="setupBack" class="btn" type="button">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="sites" class="card">
+      <div class="card-head">
+        <h2>Sites</h2>
+        <button id="cleanAll" class="btn danger" type="button">Clean everything not kept</button>
+      </div>
+      <p class="muted">Every site that has cookies in this Firefox, and every site on your keep list.</p>
+      <div id="confirm" class="confirm" hidden>
+        <p id="confirmText"></p>
+        <div class="row">
+          <button id="confirmYes" class="btn danger solid" type="button"></button>
+          <button id="confirmNo" class="btn" type="button">Cancel</button>
+        </div>
+      </div>
+      <div id="notice" class="notice" hidden>
+        <p id="noticeText"></p>
+        <div class="row" id="noticeActions"></div>
+      </div>
+      <form id="addForm" class="row add">
+        <input id="addInput" type="text" placeholder="example.com" aria-label="Site to keep" autocomplete="off" spellcheck="false">
+        <select id="addLevel" aria-label="How long to keep it">
+          <option value="always">Keep always</option>
+          <option value="session">Keep until Firefox closes</option>
+        </select>
+        <button class="btn" type="submit">Add to keep list</button>
+        <span id="addMsg" class="muted"></span>
+      </form>
+      <div class="row filters">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="kept" aria-pressed="false">Kept</button>
+        <button class="chip" type="button" data-filter="open" aria-pressed="false">Open now</button>
+        <button class="chip" type="button" data-filter="clean" aria-pressed="false">Not open, not kept</button>
+        <input id="siteFilter" type="search" placeholder="Find a site" aria-label="Find a site">
+      </div>
+      <table id="siteTable">
+        <thead><tr><th>Site</th><th class="num">Cookies</th><th>Right now</th><th>Keep</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p id="sitesEmpty" class="muted" hidden>No sites match.</p>
+      <button id="showAll" class="btn small" type="button" hidden></button>
+    </section>
+
+    <section id="activity" class="card">
+      <div class="card-head">
+        <h2>Activity</h2>
+        <button id="clearLog" class="btn small" type="button">Clear this list</button>
+      </div>
+      <p class="muted">Which sites were cleaned and how many cookies. Dustpan never records a cookie's name or what is in it. Restore works for <span data-restore-min>15</span> minutes after a clean; after that the cookies are gone for good.</p>
+      <ul id="logList" class="plain"></ul>
+      <p id="logEmpty" class="muted">Nothing has been cleaned yet.</p>
+    </section>
+
+    <section id="settings" class="card">
+      <h2>Settings</h2>
+      <div class="setting">
+        <label for="grace">Wait before cleaning</label>
+        <select id="grace"></select>
+        <p class="muted">The time between closing a site's last tab and deleting its cookies. Reopen the site within that time and nothing is deleted.</p>
+      </div>
+      <div class="setting">
+        <label class="check"><input type="checkbox" id="onNavigate"> Also clean a site when I leave it in the same tab</label>
+        <p class="muted">Off: a tab holds on to every site it has shown until you close the tab, so going back and signing in through another site keep working. On: a site is cleaned as soon as no tab is showing it. A sign-in that sends you to another site for longer than the wait can then fail.</p>
+      </div>
+      <div class="setting">
+        <label class="check"><input type="checkbox" id="cleanOpenAtQuit"> When Firefox starts, clean the sites that were still open when it closed</label>
+        <p class="muted">Off: closing Firefox with tabs open cleans nothing. On: about a minute after Firefox starts, those sites are cleaned, unless their tabs came back or you keep them.</p>
+      </div>
+    </section>
+
+    <section id="about" class="card">
+      <h2>Good to know</h2>
+      <ul class="points">
+        <li><strong>What a site is.</strong> mail.example.com and accounts.example.com are one site, example.com. Keeping or cleaning always applies to the whole site.</li>
+        <li><strong>Kept until Firefox closes.</strong> The site stays signed in while Firefox is open and is cleaned about a minute after the next start, unless it is open again by then.</li>
+        <li><strong>Embedded content.</strong> Cookies that Firefox stores for a site's embedded content (Total Cookie Protection) belong to the site you visited, and are kept or cleaned together with it.</li>
+        <li><strong>Containers.</strong> A site is cleaned in all containers at once, and only when it is open in none of them.</li>
+        <li><strong>Private windows.</strong> Dustpan does not run there. Firefox deletes private cookies itself when the last private window closes.</li>
+        <li><strong>Cookies only.</strong> Other things a site may store in your browser, such as local storage, are not touched in this version.</li>
+        <li><strong>On your device.</strong> Dustpan sends nothing anywhere. The keep list, the settings and the activity list stay in this Firefox.</li>
+      </ul>
+    </section>
+
+    <section id="support" class="card">
+      <h2>Support</h2>
+      <p>Dustpan is free, has no ads and collects no data. Every feature is unlocked for everyone. If it saves you time, a tip on Ko-fi keeps it maintained. A rating on Firefox Add-ons also helps other people find it.</p>
+      <div class="row support-actions">
+        <a class="support-pill" data-support><span class="heart">&#x2665;</span> Support on Ko-fi</a>
+        <a class="rate-pill" data-rate><span class="star" aria-hidden="true">&#x2605;</span> Rate Dustpan on Firefox Add-ons</a>
+      </div>
+    </section>
+
+    <section id="moreAddons" class="card">
+      <h2>More free add-ons</h2>
+      <p class="muted">By the same developer, on the same terms: free, no ads, no tracking.</p>
+      <ul class="more-list" data-more-list></ul>
+      <a class="more-all" data-more-all>See them all on Firefox Add-ons</a>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

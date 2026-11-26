@@ -1,0 +1,18 @@
+body { width: 372px; }
+header { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+header .brand { margin-right: auto; }
+main { padding: 12px; display: flex; flex-direction: column; gap: 12px; }
+main > .confirm, main > .notice { margin-top: 0; }
+h2 { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+.site-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.site-head .site { font-size: 15px; font-weight: 700; }
+#siteState { margin: 3px 0 9px; }
+#siteCard[data-keep="always"] #siteState, #siteCard[data-keep="session"] #siteState { color: var(--accent); font-weight: 600; }
+#pendingList li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--border); }
+#pendingList li:first-child { border-top: 0; }
+#pendingList .site { flex: 1; min-width: 0; }
+#pendingList .when { font-variant-numeric: tabular-nums; color: var(--warn); font-weight: 600; font-size: 12px; }
+#pendingList li[data-preview="1"] .when { color: var(--muted); font-weight: 500; }
+footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; border-top: 1px solid var(--border); }
+footer a { font-weight: 600; text-decoration: none; }
+footer a:hover { text-decoration: underline; }

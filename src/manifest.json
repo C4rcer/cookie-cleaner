@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Dustpan: Auto Cookie Cleaner",
+  "short_name": "Dustpan",
+  "version": "0.1.1",
+  "description": "Deletes a site's cookies shortly after you close its last tab, except for the sites you choose to keep. Off until you set it up, and a wrong clean can be undone. Free, no ads, no tracking.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "dustpan-cookie-cleaner@c4rcer",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": { "required": ["none"] }
+    }
+  },
+  "permissions": ["cookies", "tabs", "storage", "alarms"],
+  "host_permissions": ["*://*/*"],
+  "incognito": "not_allowed",
+  "background": {
+    "scripts": ["background.js"],
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Dustpan",
+    "default_area": "navbar",
+    "default_icon": { "48": "icons/icon.svg", "96": "icons/icon.svg" }
+  },
+  "options_ui": { "page": "app/app.html", "open_in_tab": true },
+  "icons": { "48": "icons/icon.svg", "96": "icons/icon.svg" }
+}
