@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Dustpan: Auto Cookie Cleaner",
   "short_name": "Dustpan",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Deletes a site's cookies shortly after you close its last tab, except for the sites you choose to keep. Off until you set it up, and a wrong clean can be undone. Free, no ads, no tracking.",
   "browser_specific_settings": {
     "gecko": {

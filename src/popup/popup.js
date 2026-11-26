@@ -252,7 +252,7 @@ wireSupportLinks();
   await refresh();
   // Shown once per milestone, only after Dustpan has been of real use.
   maybeShowMilestone($("#supportCard"), state.stats.cookies, [1000, 10000, 50000], (m) =>
-    `Dustpan has cleaned up ${m.toLocaleString("en")} cookies for you. It is free and has no ads; if it helps, a coffee keeps it maintained.`);
+    `Dustpan has cleaned up ${m.toLocaleString("en")} cookies for you.`);
   const later = debounce(refresh, 150);
   browser.storage.onChanged.addListener((changes, area) => {
     if (area === "local" || "restore" in changes) later();

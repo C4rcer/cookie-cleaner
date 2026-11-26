@@ -207,7 +207,7 @@ src/                      everything that ships
   shared/config.js        defaults and limits
   shared/util.js          small UI helpers, the activity line, texts
   shared/base.css         colors, buttons, lists
-  shared/support.*        Ko-fi pill + one-time milestone card (from the template)
+  shared/support.*        Ko-fi pill + one-time milestone card: a rating ask first, tips later (from the template)
   shared/more-addons.*    "More free add-ons" card + rate link (same file in every add-on; set `live: true` as listings are approved)
   vendor/                 public_suffix_list.dat (unmodified)
   icons/icon.svg

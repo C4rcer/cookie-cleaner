@@ -12,8 +12,8 @@
     "firefox"
   ],
   "license": "MPL-2.0",
-  "homepage": "",
-  "support_url": "",
+  "homepage": "https://github.com/C4rcer/cookie-cleaner",
+  "support_url": "https://github.com/C4rcer/cookie-cleaner/issues",
   "contributions_url": "https://ko-fi.com/carcer7378",
   "screenshot_captions": {
     "1-popup.png": "A site is cleaned shortly after you close its last tab. See what is waiting, and undo a clean with Restore",
